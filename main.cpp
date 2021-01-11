@@ -1,8 +1,8 @@
 #include <iostream>
 #include <bits/stdc++.h>
 using namespace std;
-int neg_inf = -1000000;
-int pos_inf = 1000000;
+const int neg_inf = -1000000;
+const int pos_inf = 1000000;
 //class Piece {
 //public:
 //
@@ -141,19 +141,19 @@ string into_not(pair<int,int> orig){
 
 }
 
-void eff_white_move_printer(Board &pos){
+void eff_white_move_printer(const Board &pos){
     cout << into_not(pos.second_last_move.first) << " " <<into_not(pos.second_last_move.second) << endl;
     cout << into_not(pos.last_move.first) << " " <<into_not(pos.last_move.second) << endl;
     cout << endl;
 }
 
-void eff_black_move_printer(Board &pos){
+void eff_black_move_printer(const Board &pos){
     //cout << into_not(pos.second_last_move.first) << " " <<into_not(pos.second_last_move.second) << endl;
     cout << into_not(pos.last_move.first) << " " <<into_not(pos.last_move.second) << endl;
     cout << endl;
 }
 
-void eff_color_printer(Board &pos, int color){
+void eff_color_printer(const Board &pos, int color){
     if (color==1){
         eff_black_move_printer(pos);
 
@@ -190,7 +190,7 @@ bool string_valid(string a){
 }
 
 
-bool does_piece_exist(Board& pos, pair<int,int> square){
+bool does_piece_exist(const Board& pos, pair<int,int> square){
     int x = square.first;
     int y = square.second;
     if (pos.pieces[x][y]=='.'){
@@ -202,14 +202,14 @@ bool does_piece_exist(Board& pos, pair<int,int> square){
 
 }
 
-char which_piece_exists(Board& pos, pair<int,int> square){
+char which_piece_exists(const Board& pos, pair<int,int> square){
     int x = square.first;
     int y = square.second;
     return pos.pieces[x][y];
 
 }
 
-int which_color_exists(Board& pos, pair<int,int> square){
+int which_color_exists(const Board& pos, pair<int,int> square){
     int x = square.first;
     int y = square.second;
     return pos.colors[x][y];
@@ -217,7 +217,7 @@ int which_color_exists(Board& pos, pair<int,int> square){
 }
 
 
-bool is_valid(pair<int,int> square){
+bool is_valid(const pair<int,int>& square){
     int x = square.first;
     int y = square.second;
 
@@ -280,7 +280,7 @@ void move_in_one_direction(int x, int y, Board start_pos, vector<Board>&to_retur
 }
 
 
-vector<Board> possible_moves(int x, int y, Board start_pos){
+vector<Board> possible_moves(int x, int y, const Board &start_pos){
     vector<Board> to_return;
     char id = start_pos.pieces[x][y];
     int color = start_pos.colors[x][y];
@@ -539,7 +539,7 @@ vector<Board> possible_moves(int x, int y, Board start_pos){
 
 }
 
-vector<Board> one_move_without_check(Board start_pos, int color){
+vector<Board> one_move_without_check(const Board &start_pos, int color){
     vector<Board> to_return;
 
     for (int i=0;i<8;i++){
@@ -564,7 +564,7 @@ vector<Board> one_move_without_check(Board start_pos, int color){
 
 }
 
-bool check_helper(Board &pos, int color, int direc1, int direc2, int king_x, int king_y, pair<char,char> pot_checks){
+bool check_helper(const Board &pos, int color, int direc1, int direc2, int king_x, int king_y, pair<char,char> pot_checks){
     for (int i=1;i<8;i++){
         pair<int,int> square = {king_x+(direc1*i),(king_y+direc2*i)};
 
@@ -594,7 +594,7 @@ bool check_helper(Board &pos, int color, int direc1, int direc2, int king_x, int
 
 
 
-bool is_white_in_check(Board &pos, int color){
+bool is_white_in_check(const Board &pos, int color){
 
     int king_x, king_y;
     for (int i=0;i<8;i++){
@@ -703,7 +703,7 @@ bool is_white_in_check(Board &pos, int color){
 
 }
 
-bool is_black_in_check(Board &pos, int color){
+bool is_black_in_check(const Board &pos, int color){
     int king_x, king_y;
     int wking_x, wking_y;
     for (int i=0;i<8;i++){
@@ -829,7 +829,7 @@ bool is_black_in_check(Board &pos, int color){
 
 }
 
-bool is_someone_in_check(Board &pos, int color){
+bool is_someone_in_check(const Board &pos, int color){
     if (color==1){
         return is_white_in_check(pos, color);
     } else {
@@ -838,7 +838,7 @@ bool is_someone_in_check(Board &pos, int color){
 
 }
 
-vector<Board> one_move_with_check(Board start_pos, int color){
+vector<Board> one_move_with_check(const Board &start_pos, int color){
 
     vector<Board> temp = one_move_without_check(start_pos, color);
     vector<Board> to_return;
@@ -855,7 +855,7 @@ vector<Board> one_move_with_check(Board start_pos, int color){
 }
 
 
-vector<Board> two_move_with_check(Board start_pos, int color){
+vector<Board> two_move_with_check(const Board &start_pos, int color){
     vector<Board> to_return;
     for (auto x: one_move_without_check(start_pos,color)){
         for (auto y: one_move_with_check(x,color)){
@@ -874,7 +874,7 @@ vector<Board> two_move_with_check(Board start_pos, int color){
 
 
 
-vector<Board> legal_moves(Board start_pos, int color){
+vector<Board> legal_moves(const Board &start_pos, int color){
 
     if (color==0){
         return one_move_with_check(start_pos,0);
@@ -1026,7 +1026,7 @@ int val_of_king_distance(pair<int,int> wking_pos, pair<int,int> bking_pos, int w
 }
 
 
-int value_of_pos_bpov(Board &start_pos, int color){
+int value_of_pos_bpov(const Board &start_pos, int color){
     map<char,int> white_vals = {
         {'Q',pos_inf},
         {'P',4},
@@ -1076,7 +1076,7 @@ int value_of_pos_bpov(Board &start_pos, int color){
 
 }
 
-int value_of_pos_wpov(Board &start_pos, int color){
+int value_of_pos_wpov(const Board &start_pos, int color){
     map<char,int> white_vals = {
         {'Q',100},
         {'P',4},
@@ -1129,7 +1129,7 @@ int value_of_pos_wpov(Board &start_pos, int color){
 
 
 
-int minimax_with_ab(function<int (Board&, int)> func, Board &pos, int depth, int color, int depth_to_search, int alpha, int beta){
+int minimax_with_ab(function<int (const Board&, int)> func, Board &pos, int depth, int color, int depth_to_search, int alpha, int beta){
 //    string to_print;
 //    for (int i=0;i<depth;i++){
 //        to_print += " ";
@@ -1200,7 +1200,7 @@ int minimax_with_ab(function<int (Board&, int)> func, Board &pos, int depth, int
 
 
 
-Board minimaxer_try_2(function<int (Board&, int)> func, Board &start_pos, int color, int depth_to_search){
+Board minimaxer_try_2(function<int (const Board&, int)> func, Board &start_pos, int color, int depth_to_search){
     if (color==1){
         int max_score = neg_inf;
         int max_pos = -1;
@@ -1286,7 +1286,7 @@ public:
     Board move_chooser(Board start_pos){
         vector<Board> possible_moves = legal_moves(start_pos, color);
 
-        return manual_input_black(start_pos, color);
+        //return manual_input_black(start_pos, color);
 
 
         return minimaxer_try_2(value_of_pos_bpov, start_pos,color,2);
