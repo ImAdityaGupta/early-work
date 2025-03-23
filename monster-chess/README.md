@@ -15,6 +15,7 @@
 
 - A much more advanced version with a graphical user interface built using Qt 5.12 and MinGW.
 - In theory, it should run on any Windows machine after setup.
+- Not quite the final version, which will be uploaded soon.
 
 ---
 ## Project Brief
