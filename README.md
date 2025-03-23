@@ -5,12 +5,6 @@ They're preserved here, but often do not follow best practices, are not very leg
 
 ## Projects
 
-- [`monster-chess/`](./monster-chess/)  
-  Programming a minimax algorithm to create an program that plays a custom variant of chess called Monster Chess. Implemented in C++, built over 2021–2022.
-  
-  Includes techniques such as: Zobrist hashing, magic bitboards, depth iteration, and so on.
-  I have included a write-up I did to convert the work I'd already done for school credit.
-
 - [`pseudoprimes/`](./pseudoprimes/)  
   As a returning student at PROMYS Europe (https://promys-europe.org/) in 2022, I investigated the nature of a particular type of pseudoprime called Königsberg pseudoprimes. This file is a (very spaghetti-like) exploration of these pseudoprimes with code.
   
