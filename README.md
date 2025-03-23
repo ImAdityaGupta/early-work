@@ -1,12 +1,12 @@
 # Early Work Archive
 
-This repository collects some of my early programming projects (2020–2023), done while I was in school.  
+This repository collects some of my early programming projects (2019–2023), done while I was in school.  
 They're preserved here, but often do not follow best practices, legibility, etc.
 
 ## Projects
 
 - [`monster-chess/`](./monster-chess/)  
-  Programming a minimax algorithm to create an program that plays a custom variant of chess called Monster Chess. Implemented in C++, built over 2021–2023.
+  Programming a minimax algorithm to create an program that plays a custom variant of chess called Monster Chess. Implemented in C++, built over 2021–2022.
   
   Includes techniques such as: Zobrist hashing, magic bitboards, depth iteration, and so on.
   I have included a write-up I did to convert the work I'd already done for school credit.
