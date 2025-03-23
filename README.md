@@ -1,7 +1,7 @@
 # Early Work Archive
 
 This repository collects some of my early programming projects (2019–2023), done while I was in school.  
-They're preserved here, but often do not follow best practices, legibility, etc.
+They're preserved here, but often do not follow best practices, are not very legibile, etc.
 
 ## Projects
 
